@@ -95,7 +95,7 @@ private func rotationAngleToMatchDeviceOrientation(_ orientation: UIDeviceOrient
     switch orientation {
     case .landscapeLeft:                    desiredRotationAngle = 90
     case .landscapeRight:                   desiredRotationAngle = -90
-    case .portraitUpsideDown:               desiredRotationAngle = 180
+    case .portraitUpsideDown:               desiredRotationAngle = 0
     default:                                desiredRotationAngle = 0
     }
 
