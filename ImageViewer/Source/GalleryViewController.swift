@@ -328,7 +328,12 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
 
     private var defaultInsets: UIEdgeInsets {
         if #available(iOS 11.0, *) {
-            return view.safeAreaInsets
+            if UIDevice.current.orientation == .portrait {
+                return view.safeAreaInsets
+            }
+            else {
+                return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+            }
         } else {
             return UIEdgeInsets(top: statusBarHidden ? 0.0 : 20.0, left: 0.0, bottom: 0.0, right: 0.0)
         }
