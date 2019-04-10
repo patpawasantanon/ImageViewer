@@ -680,6 +680,17 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
         case (_ as ImageViewController, let item as UIImageView):
             guard let image = item.image else { return }
             let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            if UIDevice().userInterfaceIdiom == .pad {
+                if let popoverController = activityVC.popoverPresentationController, let header = self.headerView {
+                    popoverController.sourceView = header
+                    popoverController.sourceRect = header.bounds
+                    
+                    self.present(activityVC, animated: true, completion: nil)
+                }
+            }
+            else {
+                self.present(activityVC, animated: true, completion: nil)
+            }
             self.present(activityVC, animated: true)
 
         case (_ as VideoViewController, let item as VideoView):
