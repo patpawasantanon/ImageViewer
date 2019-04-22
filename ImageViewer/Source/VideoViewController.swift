@@ -98,7 +98,7 @@ class VideoViewController: ItemBaseController<VideoView> {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        let isLandscape = itemView.bounds.width >= itemView.bounds.height
+        let isLandscape = itemView.bounds == CGRect.zero ? false : itemView.bounds.width >= itemView.bounds.height
         itemView.bounds.size = aspectFitSize(forContentOfSize: isLandscape ? fullHDScreenSizeLandscape : fullHDScreenSizePortrait, inBounds: self.scrollView.bounds.size)
         itemView.center = scrollView.boundsCenter
     }
